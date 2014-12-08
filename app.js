@@ -1,7 +1,7 @@
 /* Copyright (c) 2014 Jonathan Herman - MIT License */
 /* http://github.com/jdh11235/lightswitch */
 
-//defaults:
+//defaults for localStorage:
 
 var Defaults = {
 
@@ -42,12 +42,16 @@ var UI = {
 
 var Util = {
 
-	checkLocalStorage: function () {
-
+	initDefaults: function () {
+		for (key in Defaults) {
+			if (!localStorage[key]) {
+				localStorage[key] = Defaults[key];
+			}
+		}
 	},
 
 	init: function () {
-		Util.checkLocalStorage();
+		Util.initDefaults();
 	}
 
 };
