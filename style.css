@@ -12,6 +12,8 @@ body {
 	right: 0;
 }
 
+/* TODO: adapt this to be settable based on game ratio */
+
 @media screen and (max-aspect-ratio: 1/1) {
 	#board {
 		background: skyblue;
