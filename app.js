@@ -3,6 +3,7 @@
 
 //data
 
+//TODO: put board in localStorage with getter and setter methods?
 var Board = [];
 
 var Defaults = {
@@ -34,7 +35,7 @@ var Game = {
 	},
 
 	pressTile: function (x, y) {
-
+		//TODO: toggle all tiles within localStorage.click_radius
 	},
 
 	resetBoard: function (width, height) {
@@ -47,12 +48,19 @@ var Game = {
 		}
 	},
 
-	setTile: function (x, y, state) {
-
-	},
-
-	toggleTile: function (x, y) {
-
+	toggleTiles: function (tiles) {
+		//tiles === [[1, 1], ... [3, 4]]
+		var x, y;
+		for (tile in tiles) {
+			x = tiles[tile][0];
+			y = tiles[tile][1];
+			if (Board[x][y] === 'off') {
+				Board[x][y] = 'on';
+			} else if (Board[x][y] === 'on') {
+				Board[x][y] = 'off';
+			}
+		}
+		UI.renderBoard();
 	}
 
 };
@@ -60,7 +68,8 @@ var Game = {
 var UI = {
 
 	renderBoard: function () {
-
+		//TODO: update board on document from Board
+		console.log(Board);
 	}
 
 };
