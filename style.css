@@ -36,10 +36,10 @@ body {
 	border: 0.2rem solid white;
 */
 	background-color: black;
-	height: 100%;
+	float: left;
 }
 
-tile.on {
+.on {
 	background-color: yellow;
 }
 

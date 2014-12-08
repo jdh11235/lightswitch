@@ -86,17 +86,16 @@ var Game = {
 var UI = {
 
 	resetBoard: function (width, height) {
+		$.board.innerHTML = '';
 		var $column, $tile;
 		for (var x = 0; x < width; x++) {
 			Tiles[x] = [];
-			$column = document.createElement('div');
-			$column.style.height = 100/height + '%';
-			$.board.appendChild($column);
 			for (var y = 0; y < height; y++) {
 				$tile = document.createElement('div');
 				$tile.classList.add('tile');
 				$tile.style.width = 100/width + '%';
-				$column.appendChild($tile);
+				$tile.style.height = 100/height + '%';
+				$.board.appendChild($tile);
 				Tiles[x][y] = $tile;
 			}
 		}
