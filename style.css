@@ -31,12 +31,11 @@ body {
 }
 
 .tile {
-/*
 	box-sizing: border-box;
-	border: 0.2rem solid white;
-*/
+	border: 0.2rem solid lightgrey;
 	background-color: black;
 	float: left;
+/*	FIXME: tiles should cascade up, not left */
 }
 
 .on {
