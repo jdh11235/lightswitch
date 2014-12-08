@@ -42,16 +42,16 @@ var UI = {
 
 var Util = {
 
-	initDefaults: function () {
+	init: function () {
+		Util.setupDefaults();
+	},
+
+	setupDefaults: function () {
 		for (key in Defaults) {
 			if (!localStorage[key]) {
 				localStorage[key] = Defaults[key];
 			}
 		}
-	},
-
-	init: function () {
-		Util.initDefaults();
 	}
 
 };
