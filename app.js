@@ -97,7 +97,7 @@ var UI = {
 				$tile.classList.add('tile');
 				$tile.style.width = 100/width + '%';
 				$tile.style.height = 100/height + '%';
-				//TODO: attach click handlers
+				//TODO: attach onClick handlers (also onTouchStart or use fastclick.js)
 				$.board.appendChild($tile);
 				Tiles[x][y] = $tile;
 			}
