@@ -4,8 +4,14 @@
 //defaults:
 
 var Defaults = {
-	width: 30,
-	height: 30
+
+	click_radius: 1,
+
+	board_width: 30,
+	board_height: 30,
+
+	scramble_iterations: 30
+
 };
 
 //classes, organized alphabetically:
@@ -37,7 +43,7 @@ var UI = {
 var Util = {
 
 	checkLocalStorage: function () {
-		
+
 	},
 
 	init: function () {
