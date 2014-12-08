@@ -85,6 +85,8 @@ var Game = {
 
 var UI = {
 
+	//TODO: add buttons and newGame dialog
+
 	resetBoard: function (width, height) {
 		$.board.innerHTML = '';
 		var $column, $tile;
@@ -95,6 +97,7 @@ var UI = {
 				$tile.classList.add('tile');
 				$tile.style.width = 100/width + '%';
 				$tile.style.height = 100/height + '%';
+				//TODO: attach click handlers
 				$.board.appendChild($tile);
 				Tiles[x][y] = $tile;
 			}
@@ -115,10 +118,17 @@ var UI = {
 
 var Util = {
 
+	attachPrototypes: function () {
+		Array.prototype.randomPos = function () {
+			return Math.floor(Math.random()*this.length);
+		};
+	},
+
 	init: function () {
 		Util.attachPrototypes();
 		Util.setupDefaults();
 		Elements();
+		//TODO: start new game (or load old one when implemented)
 	},
 
 	setupDefaults: function () {
@@ -127,12 +137,6 @@ var Util = {
 				localStorage[key] = Defaults[key];
 			}
 		}
-	},
-
-	attachPrototypes: function () {
-		Array.prototype.randomPos = function () {
-			return Math.floor(Math.random()*this.length);
-		};
 	}
 
 };
