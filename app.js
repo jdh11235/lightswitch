@@ -29,6 +29,14 @@ function Elements () {
 
 var Game = {
 
+	newGame: function () {
+
+	},
+
+	pressTile: function (x, y) {
+
+	},
+
 	resetBoard: function (width, height) {
 		Board = [];
 		for (var x = 0; x < width; x++) {
@@ -39,11 +47,7 @@ var Game = {
 		}
 	},
 
-	newGame: function () {
-
-	},
-
-	pressTile: function (x, y) {
+	setTile: function (x, y, state) {
 
 	},
 
