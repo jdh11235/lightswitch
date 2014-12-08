@@ -1,7 +1,9 @@
 /* Copyright (c) 2014 Jonathan Herman - MIT License */
 /* http://github.com/jdh11235/lightswitch */
 
-//defaults for localStorage:
+//data
+
+var Board = [];
 
 var Defaults = {
 
@@ -14,19 +16,38 @@ var Defaults = {
 
 };
 
-//classes, organized alphabetically:
+var $;
+function Elements () {
+	$ = {
+
+		board: document.getElementById('board')
+
+	};
+}
+
+//classes
 
 var Game = {
 
-	createBoard: function (width, height) {
-
+	resetBoard: function (width, height) {
+		Board = [];
+		for (var x = 0; x < width; x++) {
+			Board[x] = [];
+			for (var y = 0; y < height; y++) {
+				Board[x][y] = 'off';
+			}
+		}
 	},
 
 	newGame: function () {
 
 	},
 
-	switchTile: function (x, y) {
+	pressTile: function (x, y) {
+
+	},
+
+	toggleTile: function (x, y) {
 
 	}
 
@@ -34,7 +55,7 @@ var Game = {
 
 var UI = {
 
-	renderGameboard: function () {
+	renderBoard: function () {
 
 	}
 
@@ -44,6 +65,7 @@ var Util = {
 
 	init: function () {
 		Util.setupDefaults();
+		Elements();
 	},
 
 	setupDefaults: function () {
@@ -56,6 +78,6 @@ var Util = {
 
 };
 
-//init hook:
+//init hook
 
 window.onload = Util.init;
