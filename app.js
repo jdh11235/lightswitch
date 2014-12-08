@@ -22,7 +22,10 @@ var $;
 function Elements () {
 	$ = {
 
-		board: document.getElementById('board')
+		board: document.getElementById('board'),
+		heightBox: document.getElementById('heightBox'),
+		scrambleBox: document.getElementById('scrambleBox'),
+		widthBox: document.getElementById('widthBox')
 
 	};
 }
@@ -159,6 +162,12 @@ var Util = {
 			Game.resumeGame();
 		} else {
 			Game.newGame();
+		}
+	},
+
+	limitNumberLength: function ($box, maxlength) {
+		if ($box.value.length > maxlength) {
+			$box.value = $box.value.substring(0, maxlength);
 		}
 	},
 

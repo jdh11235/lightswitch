@@ -1,10 +1,7 @@
 /* Copyright (c) 2014 Jonathan Herman - MIT License */
 /* http://github.com/jdh11235/lightswitch */
 
-body {
-	margin: 0;
-	padding: 0;
-}
+/* future */
 
 .square {
 	position: fixed;
@@ -30,6 +27,13 @@ body {
 	}
 }
 
+/* /future */
+
+body {
+	font-family: sans-serif;
+	background-color: #999;
+}
+
 .column {
 	height: 100%;
 	float: left;
@@ -37,7 +41,7 @@ body {
 
 .tile {
 	box-sizing: border-box;
-	border: 0.2rem solid lightgrey;
+	border: 0.2rem solid #999;
 	background-color: black;
 	width: 100%;
 }
@@ -48,8 +52,33 @@ body {
 
 /* TODO: leave room for UI buttons and info links */
 
-#board {
+.fixed {
 	position: fixed;
-	width: 100%;
-	height: 100%;
+	width: 90%;
+	left: 5%;
+}
+
+#controls {
+	top: 0%;
+	height: 10;
+
+	margin-top: 0.5em;
+}
+
+#controls div {
+	float: right;
+	display: inline-block;
+}
+
+#board {
+	top: 10%;
+	height: 80%;
+
+	margin: 0;
+	padding: 0;
+}
+
+#info {
+	top: 90%;
+	height: 10%;
 }
