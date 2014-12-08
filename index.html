@@ -13,11 +13,13 @@
 	<script src="app.js"></script>
 </head>
 <body>
-	<center id="controls" class="fixed">
-		<button onclick="Game.newGame()">New Game</button>
-		<span>with settings: </span>
+	<div id="controls" class="fixed">
+		<div class="left">
+			<button onclick="Game.newGame()">New Game</button>
+			<span>&nbsp;with settings: </span>
+		</div>
 
-		<div>
+		<div class="right">
 			<div>
 				<span>&nbsp;&nbsp;Scramble</span>
 				<input id="scrambleBox" type="number" oninput="Util.limitNumberLength($.scrambleBox, 3)" min="0" max="999">
@@ -31,7 +33,7 @@
 				<input id="widthBox" type="number" oninput="Util.limitNumberLength($.widthBox, 2)" min="1" max="99">
 			</div>
 		</div>
-	</center>
+	</div>
 
 	<div id="board" class="fixed"></div>
 

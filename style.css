@@ -65,7 +65,12 @@ body {
 	margin-top: 0.5em;
 }
 
-#controls div {
+.left, .left * {
+	float: left;
+	display: inline-block;
+}
+
+.right, .right div {
 	float: right;
 	display: inline-block;
 }
