@@ -30,12 +30,16 @@ body {
 	}
 }
 
+.column {
+	height: 100%;
+	float: left;
+}
+
 .tile {
 	box-sizing: border-box;
 	border: 0.2rem solid lightgrey;
 	background-color: black;
-	float: left;
-/*	FIXME: tiles should cascade up, not left */
+	width: 100%;
 }
 
 .on {

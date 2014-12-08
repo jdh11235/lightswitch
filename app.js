@@ -92,15 +92,18 @@ var UI = {
 		var $column, $tile;
 		for (var x = 0; x < width; x++) {
 			Tiles[x] = [];
+			$column = document.createElement('div');
+			$column.style.width = 100/width + '%';
+			$column.classList.add('column');
+			$.board.appendChild($column);
 			for (var y = 0; y < height; y++) {
 				$tile = document.createElement('div');
 				$tile.classList.add('tile');
-				$tile.style.width = 100/width + '%';
 				$tile.style.height = 100/height + '%';
 				//TODO: attach onClick handlers (also onTouchStart or use fastclick.js)
 				$tile.onclick = Function('Game.pressTile(' + x + ',' + y + ')');
 				$tile.id = x + '-' + y;
-				$.board.appendChild($tile);
+				$column.appendChild($tile);
 				Tiles[x][y] = $tile;
 			}
 		}
