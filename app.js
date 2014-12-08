@@ -8,7 +8,8 @@ var Board = [];
 
 var Defaults = {
 
-	click_radius: 1,
+	//TODO
+//	click_radius: 1,
 
 	board_width: 30,
 	board_height: 30,
@@ -35,7 +36,7 @@ var Game = {
 	},
 
 	pressTile: function (x, y) {
-		//TODO: toggle all tiles within localStorage.click_radius
+		Game.toggleTiles([ [x-1, y], [x+1, y], [x, y], [x, y-1], [x, y+1] ]);
 	},
 
 	resetBoard: function (width, height) {
@@ -54,10 +55,14 @@ var Game = {
 		for (tile in tiles) {
 			x = tiles[tile][0];
 			y = tiles[tile][1];
-			if (Board[x][y] === 'off') {
-				Board[x][y] = 'on';
-			} else if (Board[x][y] === 'on') {
-				Board[x][y] = 'off';
+			if (Board[x]) {
+				if (Board[x][y]) {
+					if (Board[x][y] === 'off') {
+						Board[x][y] = 'on';
+					} else if (Board[x][y] === 'on') {
+						Board[x][y] = 'off';
+					}
+				}
 			}
 		}
 		UI.renderBoard();
