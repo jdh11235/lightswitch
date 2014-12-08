@@ -50,8 +50,6 @@ body {
 	background-color: yellow;
 }
 
-/* TODO: leave room for UI buttons and info links */
-
 .fixed {
 	position: fixed;
 	width: 90%;
@@ -81,6 +79,9 @@ body {
 
 	margin: 0;
 	padding: 0;
+
+	/* TODO: disable selection */
+	/* TODO: pointer cursor */
 }
 
 #info {

@@ -8,12 +8,8 @@ var Tiles = [];
 
 var Defaults = {
 
-	//TODO
-//	click_radius: 1,
-
-	board_width: 10,
 	board_height: 10,
-
+	board_width: 10,
 	scramble_iterations: 10
 
 };
@@ -39,8 +35,10 @@ var Game = {
 	newGame: function () {
 		Game.resetBoard(localStorage.board_width, localStorage.board_height);
 		UI.resetBoard(localStorage.board_width, localStorage.board_height);
+		//TODO: replace this with a manual scramble button?
 		Game.scramble(localStorage.scramble_iterations);
 		Util.saveBoard();
+		UI.loadBoxes();
 	},
 
 	pressTile: function (x, y) {
@@ -97,7 +95,38 @@ var Game = {
 
 var UI = {
 
-	//TODO: add buttons and newGame dialog
+	inputHeight: function () {
+		var val = Number($.heightBox.value),
+			min = $.heightBox.min,
+			max = $.heightBox.max;
+		if (val >= min && val <= max) {
+			localStorage.board_height = val;
+		}
+	},
+
+	inputScramble: function () {
+		var val = Number($.scrambleBox.value),
+			min = $.scrambleBox.min,
+			max = $.scrambleBox.max;
+		if (val >= min && val <= max) {
+			localStorage.scramble_iterations = val;
+		}
+	},
+
+	inputWidth: function () {
+		var val = Number($.widthBox.value),
+			min = $.widthBox.min,
+			max = $.widthBox.max;
+		if (val >= min && val <= max) {
+			localStorage.board_width = val;
+		}
+	},
+
+	loadBoxes: function () {
+		$.heightBox.value = localStorage.board_height;
+		$.scrambleBox.value = localStorage.scramble_iterations;
+		$.widthBox.value = localStorage.board_width;
+	},
 
 	resetBoard: function (width, height, load) {
 		//"load" parameter is optional
@@ -113,7 +142,7 @@ var UI = {
 				$tile = document.createElement('div');
 				$tile.classList.add('tile');
 				$tile.style.height = 100/height + '%';
-				//TODO: attach onClick handlers (also onTouchStart or use fastclick.js)
+				//TODO: touchstart handler (prevents click handler)
 				$tile.onclick = Function('Game.pressTile(' + x + ',' + y + ')');
 				$tile.id = x + '-' + y;
 				$column.appendChild($tile);
@@ -150,6 +179,7 @@ var Util = {
 		Util.setupDefaults();
 		Elements();
 		Util.loadGame();
+		UI.loadBoxes();
 	},
 
 	loadBoard: function () {
