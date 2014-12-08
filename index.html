@@ -10,6 +10,7 @@
 	<title>lightswitch</title>
 
 	<link rel="stylesheet" href="style.css">
+
 	<script src="app.js"></script>
 </head>
 <body>
@@ -18,25 +19,28 @@
 			<button onclick="Game.newGame()">New Game</button>
 			<span>&nbsp;with settings: </span>
 		</div>
-
 		<div class="right">
 			<div>
 				<span>&nbsp;&nbsp;Scramble</span>
-				<input id="scrambleBox" type="number" oninput="Util.limitNumberLength($.scrambleBox, 3); UI.inputScramble()" min="0" max="999">
+				<input id="scrambleBox" class="box" type="number" oninput="Util.limitNumberLength($.scrambleBox, 3); UI.inputScramble()" min="0" max="999">
 			</div>
 			<div>
 				<span>&nbsp;&nbsp;H</span>
-				<input id="heightBox" type="number" oninput="Util.limitNumberLength($.heightBox, 2); UI.inputHeight()" min="1" max="99">
+				<input id="heightBox" class="box" type="number" oninput="Util.limitNumberLength($.heightBox, 2); UI.inputHeight()" min="1" max="99">
 			</div>
 			<div>
 				<span>&nbsp;&nbsp;W</span>
-				<input id="widthBox" type="number" oninput="Util.limitNumberLength($.widthBox, 2); UI.inputWidth()" min="1" max="99">
+				<input id="widthBox" class="box" type="number" oninput="Util.limitNumberLength($.widthBox, 2); UI.inputWidth()" min="1" max="99">
 			</div>
 		</div>
 	</div>
 
 	<div id="board" class="fixed"></div>
 
-	<div id="info" class="fixed"></div>
+	<center id="info" class="fixed">
+		<a class="link" href="http://git.io/lightswitch">git.io/lightswitch</a>
+		&nbsp;
+		<a class="link" href="http://github.com/jdh11235/lightswitch">http://github.com/jdh11235/lightswitch</a>
+	</center>
 </body>
 </html>

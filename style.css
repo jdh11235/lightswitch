@@ -31,7 +31,7 @@
 
 body {
 	font-family: sans-serif;
-	background-color: #999;
+	background-color: #8c92ac;
 }
 
 .column {
@@ -41,7 +41,7 @@ body {
 
 .tile {
 	box-sizing: border-box;
-	border: 0.2rem solid #999;
+	border: 0.2rem solid #8c92ac;
 	background-color: black;
 	width: 100%;
 }
@@ -57,10 +57,14 @@ body {
 }
 
 #controls {
-	top: 0%;
-	height: 10;
+	top: 2%;
+	height: 15%;
 
 	margin-top: 0.5em;
+}
+
+.box {
+	margin-top: 1em;
 }
 
 .left, .left * {
@@ -74,8 +78,8 @@ body {
 }
 
 #board {
-	top: 10%;
-	height: 80%;
+	top: 15%;
+	height: 70%;
 
 	margin: 0;
 	padding: 0;
@@ -85,6 +89,19 @@ body {
 }
 
 #info {
-	top: 90%;
-	height: 10%;
+	bottom: 0%;
+	height: 14%;
+}
+
+.link, .link:visited {
+	display: inline-block;
+	margin: 0.2em 0;
+
+	padding: 0.5em;
+	color: #d64937;
+	background-color: white;
+}
+
+.link:hover, .link:active {
+	box-shadow: 0.2em 0.2em 0 black;
 }
