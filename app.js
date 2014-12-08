@@ -30,15 +30,21 @@ function Elements () {
 
 var Game = {
 
-	//TODO: win handler (when all lights are turned off)
+	checkWin: function () {
+		if ( !Board.toString().match(/on/gi) ) {
+			alert("YOU WIN!!!");
+		}
+	},
 
 	newGame: function () {
+		Game.generating = true;
 		Game.resetBoard(localStorage.board_width, localStorage.board_height);
 		UI.resetBoard(localStorage.board_width, localStorage.board_height);
 		//TODO: replace this with a manual scramble button?
 		Game.scramble(localStorage.scramble_iterations);
 		Util.saveBoard();
 		UI.loadBoxes();
+		Game.generating = false;
 	},
 
 	pressTile: function (x, y) {
@@ -56,9 +62,11 @@ var Game = {
 	},
 
 	resumeGame: function () {
+		Game.generating = true;
 		Util.loadBoard();
 		UI.resetBoard(Board.length, Board[0].length);
 		UI.resetBoard(Board.length, Board[0].length, true);
+		Game.generating = false;
 	},
 
 	scramble: function (iterations) {
@@ -89,6 +97,9 @@ var Game = {
 			}
 		}
 		Util.saveBoard();
+		if (!Game.generating) {
+			Game.checkWin();
+		}
 	}
 
 };
@@ -142,7 +153,7 @@ var UI = {
 				$tile = document.createElement('div');
 				$tile.classList.add('tile');
 				$tile.style.height = 100/height + '%';
-				//TODO: touchstart handler (prevents click handler)
+				//TODO: touchstart handler (cancels click handler)
 				$tile.onclick = Function('Game.pressTile(' + x + ',' + y + ')');
 				$tile.id = x + '-' + y;
 				$column.appendChild($tile);
