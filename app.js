@@ -3,7 +3,6 @@
 
 //data
 
-//TODO: put board in localStorage with getter and setter methods?
 var Board = [];
 var Tiles = [];
 
@@ -32,10 +31,13 @@ function Elements () {
 
 var Game = {
 
+	//TODO: win handler (when all lights are turned off)
+
 	newGame: function () {
 		Game.resetBoard(localStorage.board_width, localStorage.board_height);
 		UI.resetBoard(localStorage.board_width, localStorage.board_height);
 		Game.scramble(localStorage.scramble_iterations);
+		Util.saveBoard();
 	},
 
 	pressTile: function (x, y) {
@@ -50,6 +52,12 @@ var Game = {
 				Board[x][y] = 'off';
 			}
 		}
+	},
+
+	resumeGame: function () {
+		Util.loadBoard();
+		UI.resetBoard(Board.length, Board[0].length);
+		UI.resetBoard(Board.length, Board[0].length, true);
 	},
 
 	scramble: function (iterations) {
@@ -79,6 +87,7 @@ var Game = {
 				}
 			}
 		}
+		Util.saveBoard();
 	}
 
 };
@@ -87,7 +96,8 @@ var UI = {
 
 	//TODO: add buttons and newGame dialog
 
-	resetBoard: function (width, height) {
+	resetBoard: function (width, height, load) {
+		//"load" parameter is optional
 		$.board.innerHTML = '';
 		var $column, $tile;
 		for (var x = 0; x < width; x++) {
@@ -105,17 +115,20 @@ var UI = {
 				$tile.id = x + '-' + y;
 				$column.appendChild($tile);
 				Tiles[x][y] = $tile;
+				if (load) {
+					if (Board[x][y] === 'on') {
+						UI.tileOn(x, y);
+					}
+				}
 			}
 		}
 	},
 
 	tileOff: function (x, y) {
-		//make this update an individual element; called from Game.toggleTiles
 		Tiles[x][y].classList.remove('on');
 	},
 
 	tileOn: function (x, y) {
-		//make this update an individual element; called from Game.toggleTiles
 		Tiles[x][y].classList.add('on');
 	}
 
@@ -133,7 +146,24 @@ var Util = {
 		Util.attachPrototypes();
 		Util.setupDefaults();
 		Elements();
-		//TODO: start new game (or load old one when implemented)
+		Util.loadGame();
+	},
+
+	loadBoard: function () {
+		Board = JSON.parse(localStorage.Board);
+	},
+
+	loadGame: function () {
+		if (localStorage.Board) {
+			Util.loadBoard();
+			Game.resumeGame();
+		} else {
+			Game.newGame();
+		}
+	},
+
+	saveBoard: function () {
+		localStorage.Board = JSON.stringify(Board);
 	},
 
 	setupDefaults: function () {
