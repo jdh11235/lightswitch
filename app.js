@@ -5,16 +5,17 @@
 
 //TODO: put board in localStorage with getter and setter methods?
 var Board = [];
+var Tiles = [];
 
 var Defaults = {
 
 	//TODO
 //	click_radius: 1,
 
-	board_width: 30,
-	board_height: 30,
+	board_width: 10,
+	board_height: 10,
 
-	scramble_iterations: 30
+	scramble_iterations: 10
 
 };
 
@@ -32,7 +33,9 @@ function Elements () {
 var Game = {
 
 	newGame: function () {
-
+		Game.resetBoard(localStorage.board_width, localStorage.board_height);
+		UI.resetBoard(localStorage.board_width, localStorage.board_height);
+		Game.scramble(localStorage.scramble_iterations);
 	},
 
 	pressTile: function (x, y) {
@@ -49,6 +52,15 @@ var Game = {
 		}
 	},
 
+	scramble: function (iterations) {
+		var x, y;
+		for (var i = 0; i < iterations; i++) {
+			x = Board.randomPos();
+			y = Board[x].randomPos();
+			Game.pressTile(x, y);
+		}
+	},
+
 	toggleTiles: function (tiles) {
 		//tiles === [[1, 1], ... [3, 4]]
 		var x, y;
@@ -59,22 +71,45 @@ var Game = {
 				if (Board[x][y]) {
 					if (Board[x][y] === 'off') {
 						Board[x][y] = 'on';
+						UI.tileOn(x, y);
 					} else if (Board[x][y] === 'on') {
 						Board[x][y] = 'off';
+						UI.tileOff(x, y);
 					}
 				}
 			}
 		}
-		UI.renderBoard();
 	}
 
 };
 
 var UI = {
 
-	renderBoard: function () {
-		//TODO: update board on document from Board
-		console.log(Board);
+	resetBoard: function (width, height) {
+		var $column, $tile;
+		for (var x = 0; x < width; x++) {
+			Tiles[x] = [];
+			$column = document.createElement('div');
+			$column.style.height = 100/height + '%';
+			$.board.appendChild($column);
+			for (var y = 0; y < height; y++) {
+				$tile = document.createElement('div');
+				$tile.classList.add('tile');
+				$tile.style.width = 100/width + '%';
+				$column.appendChild($tile);
+				Tiles[x][y] = $tile;
+			}
+		}
+	},
+
+	tileOff: function (x, y) {
+		//make this update an individual element; called from Game.toggleTiles
+		Tiles[x][y].classList.remove('on');
+	},
+
+	tileOn: function (x, y) {
+		//make this update an individual element; called from Game.toggleTiles
+		Tiles[x][y].classList.add('on');
 	}
 
 };
@@ -82,6 +117,7 @@ var UI = {
 var Util = {
 
 	init: function () {
+		Util.attachPrototypes();
 		Util.setupDefaults();
 		Elements();
 	},
@@ -92,6 +128,12 @@ var Util = {
 				localStorage[key] = Defaults[key];
 			}
 		}
+	},
+
+	attachPrototypes: function () {
+		Array.prototype.randomPos = function () {
+			return Math.floor(Math.random()*this.length);
+		};
 	}
 
 };

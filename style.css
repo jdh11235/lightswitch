@@ -15,17 +15,36 @@ body {
 /* TODO: adapt this to be settable based on game ratio */
 
 @media screen and (max-aspect-ratio: 1/1) {
-	#board {
-		background: skyblue;
+	.square {
+/*		background: skyblue;*/
 		width: 100vw;
 		height: 100vw;
 	}
 }
 
 @media screen and (min-aspect-ratio: 1/1) {
-	#board {
-		background: green;
+	.square {
+/*		background: green;*/
 		width: 100vh;
 		height: 100vh;
 	}
+}
+
+.tile {
+/*
+	box-sizing: border-box;
+	border: 0.2rem solid white;
+*/
+	background-color: black;
+	height: 100%;
+}
+
+tile.on {
+	background-color: yellow;
+}
+
+#board {
+	position: fixed;
+	width: 100%;
+	height: 100%;
 }
