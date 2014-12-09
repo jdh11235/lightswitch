@@ -65,6 +65,7 @@ body {
 
 .box {
 	margin-top: 1em;
+	width: 3em;
 }
 
 .left, .left * {
