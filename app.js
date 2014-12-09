@@ -10,6 +10,7 @@ var Defaults = {
 
 	board_height: 5,
 	board_width: 5,
+	moves: 0,
 	scramble_iterations: 3
 
 };
@@ -20,6 +21,7 @@ function Elements () {
 
 		board: document.getElementById('board'),
 		heightBox: document.getElementById('heightBox'),
+		movesBox: document.getElementById('movesBox'),
 		scrambleBox: document.getElementById('scrambleBox'),
 		widthBox: document.getElementById('widthBox')
 
@@ -36,8 +38,14 @@ var Game = {
 		}
 	},
 
+	incrementMoves: function (amount) {
+		localStorage.moves = Number(localStorage.moves) + amount;
+		UI.updateMoves();
+	},
+
 	newGame: function () {
 		Game.generating = true;
+		localStorage.moves = 0;
 		Game.resetBoard(localStorage.board_width, localStorage.board_height);
 		UI.resetBoard(localStorage.board_width, localStorage.board_height);
 		//TODO: replace this with a manual scramble button?
@@ -97,6 +105,7 @@ var Game = {
 		}
 		Util.saveBoard();
 		if (!Game.generating) {
+			Game.incrementMoves(1);
 			Game.checkWin();
 		}
 	}
@@ -138,6 +147,7 @@ var UI = {
 		$.heightBox.value = localStorage.board_height;
 		$.scrambleBox.value = localStorage.scramble_iterations;
 		$.widthBox.value = localStorage.board_width;
+		UI.updateMoves();
 	},
 
 	resetBoard: function (width, height, load) {
@@ -176,8 +186,12 @@ var UI = {
 		Tiles[x][y].classList.add('on');
 	},
 
+	updateMoves: function () {
+		$.movesBox.innerHTML = localStorage.moves;
+	},
+
 	win: function () {
-		alert("YOU WIN!!!");
+		alert("YOU WIN!!!" + "\nMoves: " + localStorage.moves);
 	}
 
 };
