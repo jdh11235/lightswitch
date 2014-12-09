@@ -9,7 +9,7 @@
 	right: 0;
 }
 
-/* TODO: adapt this to be settable based on game ratio */
+/* TODO: adapt this in JS to make square based on game ratio */
 
 @media screen and (max-aspect-ratio: 1/1) {
 	.square {
@@ -84,8 +84,13 @@ body {
 	margin: 0;
 	padding: 0;
 
-	/* TODO: disable selection */
-	/* TODO: pointer cursor */
+	cursor: crosshair;
+}
+
+.noselect {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 
 #info {
