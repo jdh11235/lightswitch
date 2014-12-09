@@ -92,7 +92,7 @@ function FastClick(layer, options) {
 	 *
 	 * @type number
 	 */
-	this.tapDelay = options.tapDelay || 200;
+	this.tapDelay = options.tapDelay || 0; //CHANGES: (200 => 0) enable repetitive tapping
 
 	if (FastClick.notNeeded(layer)) {
 		return;
