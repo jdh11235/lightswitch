@@ -16,22 +16,27 @@
 </head>
 <body>
 	<div id="controls" class="fixed">
+		<center>
+			<i>Turn off all the lights.</i>
+		</center>
+
 		<div class="left">
 			<button onclick="Game.newGame()">New Game</button>
 			<span>&nbsp;with settings: </span>
 		</div>
+
 		<div class="right">
 			<div>
 				<span>&nbsp;&nbsp;Difficulty</span>
-				<input id="scrambleBox" class="box" type="number" oninput="Util.limitNumberLength($.scrambleBox, 3); UI.inputScramble()" min="0" max="999">
+				<input id="scrambleBox" class="box" type="number" oninput="Util.limitNumberLength($.scrambleBox, 3); UI.inputScramble()" min="0" max="999" tabindex="3">
 			</div>
 			<div>
 				<span>&nbsp;&nbsp;H</span>
-				<input id="heightBox" class="box" type="number" oninput="Util.limitNumberLength($.heightBox, 2); UI.inputHeight()" min="1" max="99">
+				<input id="heightBox" class="box" type="number" oninput="Util.limitNumberLength($.heightBox, 2); UI.inputHeight()" min="1" max="99" tabindex="2">
 			</div>
 			<div>
 				<span>&nbsp;&nbsp;W</span>
-				<input id="widthBox" class="box" type="number" oninput="Util.limitNumberLength($.widthBox, 2); UI.inputWidth()" min="1" max="99">
+				<input id="widthBox" class="box" type="number" oninput="Util.limitNumberLength($.widthBox, 2); UI.inputWidth()" min="1" max="99" tabindex="1">
 			</div>
 		</div>
 	</div>
