@@ -8,9 +8,9 @@ var Tiles = [];
 
 var Defaults = {
 
-	board_height: 10,
-	board_width: 10,
-	scramble_iterations: 10
+	board_height: 5,
+	board_width: 5,
+	scramble_iterations: 3
 
 };
 
