@@ -64,7 +64,6 @@ var Game = {
 	resumeGame: function () {
 		Game.generating = true;
 		Util.loadBoard();
-		UI.resetBoard(Board.length, Board[0].length);
 		UI.resetBoard(Board.length, Board[0].length, true);
 		Game.generating = false;
 	},
