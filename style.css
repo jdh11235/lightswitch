@@ -1,0 +1,113 @@
+/* Copyright (c) 2014 Jonathan Herman - MIT License */
+/* http://github.com/jdh11235/lightswitch */
+
+/* future */
+
+.square {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+/* TODO: adapt this in JS to make square based on game ratio */
+
+@media screen and (max-aspect-ratio: 1/1) {
+	.square {
+/*		background: skyblue;*/
+		width: 100vw;
+		height: 100vw;
+	}
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+	.square {
+/*		background: green;*/
+		width: 100vh;
+		height: 100vh;
+	}
+}
+
+/* /future */
+
+body {
+	font-family: sans-serif;
+	background-color: #8c92ac;
+}
+
+.column {
+	height: 100%;
+	float: left;
+}
+
+.tile {
+	box-sizing: border-box;
+	border: 0.2rem solid #8c92ac;
+	background-color: black;
+	width: 100%;
+}
+
+.on {
+	background-color: yellow;
+}
+
+.fixed {
+	position: fixed;
+	width: 90%;
+	left: 5%;
+}
+
+#controls {
+	top: 2%;
+	height: 15%;
+
+	margin-top: 0.5em;
+}
+
+.box {
+	margin-top: 1em;
+	width: 3em;
+}
+
+.left, .left * {
+	float: left;
+	display: inline-block;
+}
+
+.right, .right div {
+	float: right;
+	display: inline-block;
+}
+
+#board {
+	top: 15%;
+	height: 70%;
+
+	margin: 0;
+	padding: 0;
+
+	cursor: crosshair;
+}
+
+.noselect {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#info {
+	bottom: 0%;
+	height: 14%;
+}
+
+.link, .link:visited {
+	display: inline-block;
+	margin: 0.2em 0;
+
+	padding: 0.5em;
+	color: #d64937;
+	background-color: white;
+}
+
+.link:hover, .link:active {
+	box-shadow: 0.2em 0.2em 0 black;
+}
