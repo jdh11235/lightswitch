@@ -32,7 +32,7 @@ var Game = {
 
 	checkWin: function () {
 		if ( !Board.toString().match(/on/gi) ) {
-			alert("YOU WIN!!!");
+			setTimeout(UI.win, 1);
 		}
 	},
 
@@ -106,6 +106,8 @@ var Game = {
 
 var UI = {
 
+	//TODO: add "moves" counter?
+
 	inputHeight: function () {
 		var val = Number($.heightBox.value),
 			min = $.heightBox.min,
@@ -142,7 +144,7 @@ var UI = {
 	resetBoard: function (width, height, load) {
 		//"load" parameter is optional
 		$.board.innerHTML = '';
-		var $column, $tile;
+		var $column, $tile, press, touchPress;
 		for (var x = 0; x < width; x++) {
 			Tiles[x] = [];
 			$column = document.createElement('div');
@@ -153,8 +155,8 @@ var UI = {
 				$tile = document.createElement('div');
 				$tile.classList.add('tile');
 				$tile.style.height = 100/height + '%';
-				//TODO: touchstart handler (cancels click handler)
-				$tile.onclick = Function('Game.pressTile(' + x + ',' + y + ')');
+				press = Function('Game.pressTile(' + x + ',' + y + ');');
+				$tile.onclick = press;
 				$tile.id = x + '-' + y;
 				$column.appendChild($tile);
 				Tiles[x][y] = $tile;
@@ -173,6 +175,10 @@ var UI = {
 
 	tileOn: function (x, y) {
 		Tiles[x][y].classList.add('on');
+	},
+
+	win: function () {
+		alert("YOU WIN!!!");
 	}
 
 };
@@ -186,6 +192,8 @@ var Util = {
 	},
 
 	init: function () {
+		FastClick.attach(document.body);
+		Util.preventScrolling(window);
 		Util.attachPrototypes();
 		Util.setupDefaults();
 		Elements();
@@ -210,6 +218,12 @@ var Util = {
 		if ($box.value.length > maxlength) {
 			$box.value = $box.value.substring(0, maxlength);
 		}
+	},
+
+	preventScrolling: function ($elm) {
+		$elm.addEventListener('touchmove', function(event){
+			event.preventDefault();
+		});
 	},
 
 	saveBoard: function () {
