@@ -38,6 +38,12 @@ body {
 	color: yellow;
 }
 
+.border {
+	border: 0.15em solid white;
+	padding: 0.3em 0.3em 0.075em;
+	margin-left: 0.5em;
+}
+
 .column {
 	height: 100%;
 	float: left;
@@ -64,16 +70,16 @@ body {
 	top: 0%;
 	height: 15%;
 
-	margin-top: 0.5em;
+	margin-top: 0.6em;
 }
 
 .box {
-	margin-top: 1em;
+	margin-top: 0.4em;
 	width: 3em;
 }
 
 .left {
-	margin-top: 0.5em;
+	margin-top: 0.3em;
 }
 
 .left, .left * {
@@ -93,7 +99,7 @@ body {
 	margin: 0;
 	padding: 0;
 
-	cursor: crosshair;
+	cursor: pointer;
 }
 
 .noselect {
@@ -104,7 +110,7 @@ body {
 
 #info {
 	bottom: 0%;
-	height: 14%;
+	height: 15%;
 }
 
 .link, .link:visited {
