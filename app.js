@@ -179,13 +179,14 @@ var UI = {
 	},
 
 	resize: function () {
-		var height_top = 15,
-			height_bottom = 15,
-			ratio = {x:Board.length, y:Board[0].length}
-		console.log(ratio.x);
-		console.log(ratio.y);
-		console.log(ratio.x/ratio.y);
-		console.log(ratio.y/ratio.x);
+		var top_height = 15,
+			bottom_height = 15,
+			board_ratio = {x:Board.length, y:Board[0].length},
+			screen_ratio = {x:window.innerWidth, y:window.innerHeight},
+			board_width = $.board.style.width,
+			board_height = $.board.style.height;
+		console.log(board_ratio.x + ':' + board_ratio.y);
+		console.log(screen_ratio.x + ':' + screen_ratio.y);
 	},
 
 	tileOff: function (x, y) {
