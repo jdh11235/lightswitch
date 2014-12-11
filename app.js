@@ -178,6 +178,16 @@ var UI = {
 		}
 	},
 
+	resize: function () {
+		var height_top = 15,
+			height_bottom = 15,
+			ratio = {x:Board.length, y:Board[0].length}
+		console.log(ratio.x);
+		console.log(ratio.y);
+		console.log(ratio.x/ratio.y);
+		console.log(ratio.y/ratio.x);
+	},
+
 	tileOff: function (x, y) {
 		Tiles[x][y].classList.remove('on');
 	},
